@@ -8,13 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AdminController {
-	@RequestMapping({"/"})
-	public String loginForm(Locale locale, Model model) {
+
+
+	@RequestMapping({"/", "/productManage"})
+	public String home(Locale locale, Model model) {
 		return "productManageForm";
 	}
-
-	@RequestMapping("/login")
-	public String home(Locale locale, Model model) {
+	
+	@RequestMapping({"login"})
+	public String loginForm(Locale locale, Model model) {
 		return "loginForm";
+	}
+	
+	@RequestMapping({"profile"})
+	public String profileForm(Locale locale, Model model) {
+		return "profileForm";
 	}
 }

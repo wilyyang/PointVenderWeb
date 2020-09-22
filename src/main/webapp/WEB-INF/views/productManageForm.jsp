@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="resources/docs/favicon.ico">
+    <link rel="icon" href="resources/company/favicon.png">
 
-    <title>Dashboard Template for Bootstrap</title>
+    <title>Product Management</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -40,18 +40,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="/">PointMobile Vendor Admin</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Dashboard</a></li>
-            <li><a href="#">Settings</a></li>
-            <li><a href="#">Profile</a></li>
-            <li><a href="#">Help</a></li>
+            <!-- <li><a href="#">Profile</a></li> -->
+            <li><a href="/logout">Logout</a></li>
           </ul>
-          <form class="navbar-form navbar-right">
-            <input type="text" class="form-control" placeholder="Search...">
-          </form>
         </div>
       </div>
     </nav>

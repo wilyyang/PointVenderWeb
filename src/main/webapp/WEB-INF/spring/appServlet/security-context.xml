@@ -8,8 +8,8 @@
 	<!-- <http pattern="/setImg" security="none"/> <http pattern="receiveImg" 
 		security="none"/> -->
 	<http auto-config="true">
-		<intercept-url pattern="/home" access="permitAll" />
-		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/" access="hasRole('ROLE_ADMIN')" />
+		<!-- <intercept-url pattern="/" access="permitAll" />  -->
 		
 		<logout logout-url="/logout" invalidate-session="true"
 			logout-success-url="/login" />
@@ -21,7 +21,7 @@
 	<authentication-manager>
 		<authentication-provider>
 			<user-service>
-				<user name="1111" password="1111" authorities="ROLE_ADMIN" />
+				<user name="1234" password="4321" authorities="ROLE_ADMIN" />
 			</user-service>
 		</authentication-provider>
 	</authentication-manager>
