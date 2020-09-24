@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="resources/company/favicon.png">
 
-    <title>Signin ID : 1234 PW : 4321</title>
+    <title>Signin</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,7 @@
 				</div>
 			</c:if>
 
-			<h2 class="form-signin-heading">관리자 로그인</h2>
+			<h2 class="form-signin-heading">관리자 로그인  ID : 1111 PW : 1111</h2>
 			<label for="inputEmail" class="sr-only">Admin ID</label> <input
 				type="text" id="username" name="adminid" class="form-control"
 				placeholder="Admin ID" required autofocus> <label

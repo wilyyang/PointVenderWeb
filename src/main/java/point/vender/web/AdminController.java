@@ -1,5 +1,6 @@
 package point.vender.web;
 
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Locale;
 
@@ -22,6 +23,11 @@ public class AdminController {
 	
 	@RequestMapping("/addProduct")
 	public String addProduct(HttpServletRequest request, Locale locale, Model model) throws ServletException {
+		Enumeration<String> e = request.getAttributeNames();
+		while(e.hasMoreElements()) {
+			System.out.println(e.nextElement());
+		}
+		
 		ProductDao dao = new ProductDao();
 		dao.addDao(request.getParameter("name"), request.getParameterMap());
 		
