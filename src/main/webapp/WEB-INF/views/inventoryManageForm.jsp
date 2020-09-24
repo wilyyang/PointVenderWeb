@@ -31,7 +31,6 @@
 
   <body>
 
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -56,16 +55,14 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="/productManage">惑前 包府<span class="sr-only">(current)</span></a></li>
-            <li><a href="/inventoryManage">犁绊 包府</a></li>
+            <li><a href="/productManage">惑前 包府</a></li>
+            <li class="active"><a href="/inventoryManage">犁绊 包府<span class="sr-only">(current)</span></a></li>
             <li><a href="/revenueManage">概免 概涝 郴开</a></li>
           </ul>
         </div>
         
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">惑前 包府</h2>
-          <button type="button" class="btn btn-default" onclick="crayBtn1()">惑前3眠啊</button>
-          <br/><br/><br/>
+          <h2 class="sub-header">犁绊 包府</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -199,7 +196,6 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="resources/dist/js/bootstrap.min.js"></script>

@@ -1,27 +1,46 @@
 package point.vender.web;
 
+import java.util.HashMap;
 import java.util.Locale;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import point.vender.web.dao.ProductDao;
+
 @Controller
 public class AdminController {
-
-
+	
 	@RequestMapping({"/", "/productManage"})
-	public String home(Locale locale, Model model) {
+	public String productManageForm(Locale locale, Model model) {
 		return "productManageForm";
 	}
 	
-	@RequestMapping({"login"})
+	@RequestMapping("/addProduct")
+	public String addProduct(HttpServletRequest request, Locale locale, Model model) throws ServletException {
+		ProductDao dao = new ProductDao();
+		dao.addDao(request.getParameter("name"), request.getParameterMap());
+		
+		return "productManageForm";
+	}
+	
+	
+	@RequestMapping("login")
 	public String loginForm(Locale locale, Model model) {
 		return "loginForm";
 	}
 	
-	@RequestMapping({"profile"})
-	public String profileForm(Locale locale, Model model) {
-		return "profileForm";
+	@RequestMapping("revenueManage")
+	public String revenueManageForm(Locale locale, Model model) {
+		return "revenueManageForm";
+	}
+	
+	@RequestMapping("inventoryManage")
+	public String inventoryManageForm(Locale locale, Model model) {
+		return "inventoryManageForm";
 	}
 }

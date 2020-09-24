@@ -11,7 +11,7 @@
     <meta name="author" content="">
     <link rel="icon" href="resources/company/favicon.png">
 
-    <title>Signin</title>
+    <title>Signin ID : 1234 PW : 4321</title>
 
     <!-- Bootstrap core CSS -->
     <link href="resources/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -46,16 +46,15 @@
 				</div>
 			</c:if>
 
-			<h2 class="form-signin-heading">Please sign in</h2>
-			<label for="inputEmail" class="sr-only">Email address</label> <input
+			<h2 class="form-signin-heading">관리자 로그인</h2>
+			<label for="inputEmail" class="sr-only">Admin ID</label> <input
 				type="text" id="username" name="adminid" class="form-control"
 				placeholder="Admin ID" required autofocus> <label
 				for="inputPassword" class="sr-only">Password</label> <input
 				type="password" id="password" name="adminpw" class="form-control"
 				placeholder="Password" required> <input type="hidden"
 				name="${_csrf.parameterName}" value="${_csrf.token}" />
-			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign
-				in</button>
+			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		</form>
 
 

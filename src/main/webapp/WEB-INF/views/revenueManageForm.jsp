@@ -31,7 +31,6 @@
 
   <body>
 
-
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container-fluid">
         <div class="navbar-header">
@@ -56,16 +55,14 @@
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
           <ul class="nav nav-sidebar">
-            <li class="active"><a href="/productManage">상품 관리<span class="sr-only">(current)</span></a></li>
+            <li><a href="/productManage">상품 관리</a></li>
             <li><a href="/inventoryManage">재고 관리</a></li>
-            <li><a href="/revenueManage">매출 매입 내역</a></li>
+            <li class="active"><a href="/revenueManage">매출 매입 내역<span class="sr-only">(current)</span></a></li>
           </ul>
         </div>
         
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <h2 class="sub-header">상품 관리</h2>
-          <button type="button" class="btn btn-default" onclick="crayBtn1()">상품3추가</button>
-          <br/><br/><br/>
+          <h2 class="sub-header">매출 매입 내역</h2>
           <div class="table-responsive">
             <table class="table table-striped">
               <thead>
@@ -199,7 +196,6 @@
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
-
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="resources/dist/js/bootstrap.min.js"></script>
