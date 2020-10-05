@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,69 +32,83 @@
 
 	<div class="modal fade" id="productModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
+		<form action="/addProduct" method="post" id="addProductForm">
 			<div class="modal-content">
 				<div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="exampleModalLabel">ªÛ«∞ √ﬂ∞°</h4>
+					<h4 class="modal-title" id="exampleModalLabel">ÏÉÅÌíà Ï∂îÍ∞Ä</h4>
 				</div>
 				<div class="modal-body">
-					<form>
-						<div class="form-group">
-							<label for="code1" class="control-label">Code 1</label> <input
-								type="text" class="form-control" id="code1">
-							<label for="code2" class="control-label">Code 2</label> <input
-								type="text" class="form-control" id="code2">
+				
+					
+						<div class="form-group row">
+							<div class="col-xs-4">
+								<label for="code1">code1</label> 
+								<input class="form-control"	name="code1" id="code1" type="text">
+							</div>
+							<div class="col-xs-4">
+								<label for="code2">code2</label> 
+								<input class="form-control" name="code2" id="code2" type="text">
+							</div>
+							<div class="col-xs-8">
+								<label for="name">name</label> 
+								<input class="form-control" name="name" id="name" type="text">
+							</div>
+						</div>
+						<div class="form-group row">
+							<div class="col-xs-6">
+								<label for="category">category</label> 
+								<input class="form-control"	name="category" id="category" type="text">
+							</div>
+							<div class="col-xs-6">
+								<label for="option">option</label> 
+								<input class="form-control" name="option" id="option" type="text">
+							</div>
+						</div>
+						
+						<div class="form-group row">
+							<div class="col-xs-6">
+								<label for="standard">standard</label> 
+								<input class="form-control"	name="standard" id="standard" type="text">
+							</div>
+							<div class="col-xs-4">
+								<label for="unit">unit</label> 
+								<input class="form-control" name="unit" id="unit" type="text">
+							</div>
 						</div>
 
-						<div class="form-group">
-							<label for="category" class="control-label">category</label> <input
-								type="text" class="form-control" id="category">
+						<div class="form-group row">
+							<div class="col-xs-8">
+								<label for="barcode">barcode</label> 
+								<input class="form-control"	name="barcode" id="barcode" type="text">
+							</div>
 						</div>
-						<div class="form-group">
-							<label for="name" class="control-label">name</label> <input
-								type="text" class="form-control" id="name">
-						</div>
-
-						<div class="form-group">
-							<label for="option" class="control-label">option</label> <input
-								type="text" class="form-control" id="option">
-						</div>
-						<div class="form-group">
-							<label for="standard" class="control-label">standard</label> <input
-								type="text" class="form-control" id="standard">
-						</div>
-
-						<div class="form-group">
-							<label for="unit" class="control-label">unit</label> <input
-								type="text" class="form-control" id="unit">
-						</div>
-						<div class="form-group">
-							<label for="barcode" class="control-label">barcode</label> <input
-								type="text" class="form-control" id="barcode">
+						
+						<div class="form-group row">
+							<div class="col-xs-4">
+								<label for="incomingPrice">incomingPrice</label> 
+								<input class="form-control"	name="incomingPrice" id="incomingPrice" type="text">
+							</div>
+							<div class="col-xs-4">
+								<label for="outgoingPrice">outgoingPrice</label> 
+								<input class="form-control" name="outgoingPrice" id="outgoingPrice" type="text">
+							</div>
+							<div class="col-xs-4">
+								<label for="sellingPrice">sellingPrice</label> 
+								<input class="form-control" name="sellingPrice" id="sellingPrice" type="text">
+							</div>
 						</div>
 
-						<div class="form-group">
-							<label for="incomingPrice" class="control-label">incomingPrice</label> <input
-								type="text" class="form-control" id="incomingPrice">
-						</div>
-						<div class="form-group">
-							<label for="outgoingPrice" class="control-label">outgoingPrice</label> <input
-								type="text" class="form-control" id="outgoingPrice">
-						</div>
-						<div class="form-group">
-							<label for="sellingPrice" class="control-label">sellingPrice</label> <input
-								type="text" class="form-control" id="sellingPrice">
-						</div>
-					</form>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary" href="/addProduct">√ﬂ∞°</button>
+					<button type="submit" class="btn btn-primary">Ï∂îÍ∞Ä</button>
 				</div>
 			</div>
+								</form>
 		</div>
 	</div>
 
@@ -124,21 +137,24 @@
 		<div class="row">
 			<div class="col-sm-3 col-md-2 sidebar">
 				<ul class="nav nav-sidebar">
-					<li class="active"><a href="/productManage">ªÛ«∞ ∞¸∏Æ<span
+					<li class="active"><a href="/productManage">ÏÉÅÌíàÍ¥ÄÎ¶¨<span
 							class="sr-only">(current)</span></a></li>
-					<li><a href="/inventoryManage">¿Á∞Ì ∞¸∏Æ</a></li>
-					<li><a href="/revenueManage">∏≈√‚ ∏≈¿‘ ≥ªø™</a></li>
+					<li><a href="/inventoryManage">Ïû¨Í≥† Í¥ÄÎ¶¨</a></li>
+					<li><a href="/revenueManage">Îß§Ï∂ú Îß§ÏûÖ ÎÇ¥Ïó≠</a></li>
 				</ul>
 			</div>
 
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<h2 class="sub-header">ªÛ«∞ ∞¸∏Æ</h2>
+				<h2 class="sub-header">ÏÉÅÌíà Í¥ÄÎ¶¨</h2>
 				
-				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal">ªÛ«∞ √ﬂ∞°</button>
+				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal">ÏÉÅÌíà Ï∂îÍ∞Ä</button>
 				<br />
 				<br />
 				<br />
+				
 				<div class="table-responsive">
+				
+				
 					<table class="table table-striped">
 						<thead>
 							<tr>
@@ -157,113 +173,10 @@
 								<td>dolor</td>
 								<td>sit</td>
 							</tr>
-							<tr>
-								<td>1,002</td>
-								<td>amet</td>
-								<td>consectetur</td>
-								<td>adipiscing</td>
-								<td>elit</td>
-							</tr>
-							<tr>
-								<td>1,003</td>
-								<td>Integer</td>
-								<td>nec</td>
-								<td>odio</td>
-								<td>Praesent</td>
-							</tr>
-							<tr>
-								<td>1,003</td>
-								<td>libero</td>
-								<td>Sed</td>
-								<td>cursus</td>
-								<td>ante</td>
-							</tr>
-							<tr>
-								<td>1,004</td>
-								<td>dapibus</td>
-								<td>diam</td>
-								<td>Sed</td>
-								<td>nisi</td>
-							</tr>
-							<tr>
-								<td>1,005</td>
-								<td>Nulla</td>
-								<td>quis</td>
-								<td>sem</td>
-								<td>at</td>
-							</tr>
-							<tr>
-								<td>1,006</td>
-								<td>nibh</td>
-								<td>elementum</td>
-								<td>imperdiet</td>
-								<td>Duis</td>
-							</tr>
-							<tr>
-								<td>1,007</td>
-								<td>sagittis</td>
-								<td>ipsum</td>
-								<td>Praesent</td>
-								<td>mauris</td>
-							</tr>
-							<tr>
-								<td>1,008</td>
-								<td>Fusce</td>
-								<td>nec</td>
-								<td>tellus</td>
-								<td>sed</td>
-							</tr>
-							<tr>
-								<td>1,009</td>
-								<td>augue</td>
-								<td>semper</td>
-								<td>porta</td>
-								<td>Mauris</td>
-							</tr>
-							<tr>
-								<td>1,010</td>
-								<td>massa</td>
-								<td>Vestibulum</td>
-								<td>lacinia</td>
-								<td>arcu</td>
-							</tr>
-							<tr>
-								<td>1,011</td>
-								<td>eget</td>
-								<td>nulla</td>
-								<td>Class</td>
-								<td>aptent</td>
-							</tr>
-							<tr>
-								<td>1,012</td>
-								<td>taciti</td>
-								<td>sociosqu</td>
-								<td>ad</td>
-								<td>litora</td>
-							</tr>
-							<tr>
-								<td>1,013</td>
-								<td>torquent</td>
-								<td>per</td>
-								<td>conubia</td>
-								<td>nostra</td>
-							</tr>
-							<tr>
-								<td>1,014</td>
-								<td>per</td>
-								<td>inceptos</td>
-								<td>himenaeos</td>
-								<td>Curabitur</td>
-							</tr>
-							<tr>
-								<td>1,015</td>
-								<td>sodales</td>
-								<td>ligula</td>
-								<td>in</td>
-								<td>libero</td>
-							</tr>
 						</tbody>
 					</table>
+					
+					
 				</div>
 			</div>
 		</div>
@@ -271,7 +184,6 @@
 
 	<!-- Bootstrap core JavaScript
     ================================================== -->
-
 	<script>
 		$('#productModal').on('show.bs.modal', function(event) {})
 	</script>

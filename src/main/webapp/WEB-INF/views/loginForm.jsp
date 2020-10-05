@@ -46,13 +46,13 @@
 				</div>
 			</c:if>
 
-			<h2 class="form-signin-heading">관리자 로그인  ID : 1111 PW : 1111</h2>
-			<label for="inputEmail" class="sr-only">Admin ID</label> <input
+			<h2 class="form-signin-heading">관리자 로그인</h2>
+			<label for="inputEmail" class="sr-only">Admin ID : </label> <input
 				type="text" id="username" name="adminid" class="form-control"
-				placeholder="Admin ID" required autofocus> <label
-				for="inputPassword" class="sr-only">Password</label> <input
+				placeholder="Admin ID : 1111" required autofocus> <label
+				for="inputPassword" class="sr-only">Password : </label> <input
 				type="password" id="password" name="adminpw" class="form-control"
-				placeholder="Password" required> <input type="hidden"
+				placeholder="Password : 1111" required> <input type="hidden"
 				name="${_csrf.parameterName}" value="${_csrf.token}" />
 			<button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
 		</form>
