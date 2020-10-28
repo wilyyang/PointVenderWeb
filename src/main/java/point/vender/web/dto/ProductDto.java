@@ -38,6 +38,16 @@ public class ProductDto {
 		this.sellingPrice = sellingPrice;
 	}
 
+	
+	
+	@Override
+	public String toString() {
+		return "ProductDto [key=" + key + ", code1=" + code1 + ", code2=" + code2 + ", category=" + category + ", name="
+				+ name + ", option=" + option + ", standard=" + standard + ", unit=" + unit + ", barcode=" + barcode
+				+ ", incomingPrice=" + incomingPrice + ", outgoingPrice=" + outgoingPrice + ", sellingPrice="
+				+ sellingPrice + "]";
+	}
+
 	public String getKey() {
 		return key;
 	}

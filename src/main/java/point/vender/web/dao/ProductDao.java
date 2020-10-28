@@ -33,12 +33,19 @@ public class ProductDao implements IProductDao{
 			}
 		}
 
-
 		try {
 			datastore.put(post);
 		} catch (DatastoreFailureException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	@Override
+	public List<Entity> listDao() {
+		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+		Query q = new Query("Product").addSort("name", SortDirection.DESCENDING);
+		PreparedQuery pq = datastore.prepare(q);
+		return pq.asList(FetchOptions.Builder.withDefaults());
 	}
 	
 	@Override
@@ -72,13 +79,7 @@ public class ProductDao implements IProductDao{
 		return product;
 	}
 
-	@Override
-	public List<Entity> listDao() {
-		DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
-		Query q = new Query("Product").addSort("key", SortDirection.DESCENDING);
-		PreparedQuery pq = datastore.prepare(q);
-		return pq.asList(FetchOptions.Builder.withDefaults());
-	}
+
 
 	@Override
 	public void deleteDao(String key) {
