@@ -1,10 +1,10 @@
 package point.vender.web.dto;
 
-import java.util.ArrayList;
+import point.vender.web.Const;
 
 public class ProductDto {
 
-	private String key;
+	private String date;
 	private String code1;
 	private String code2;
 	private String category;
@@ -16,15 +16,16 @@ public class ProductDto {
 	private String incomingPrice;
 	private String outgoingPrice;
 	private String sellingPrice;
-	public static final String[] attrList = {"code1","code2","category","name","option","standard","unit","barcode","incomingPrice","outgoingPrice","sellingPrice"};
 	
+	private String imagePath;
+
 	public ProductDto(){}
 	
-	public ProductDto(String key, String code1, String code2, String category, String name, String option,
+	public ProductDto(String date, String code1, String code2, String category, String name, String option,
 			String standard, String unit, String barcode, String incomingPrice, String outgoingPrice,
-			String sellingPrice) {
+			String sellingPrice, String imagePath) {
 		super();
-		this.key = key;
+		this.date = date;
 		this.code1 = code1;
 		this.code2 = code2;
 		this.category = category;
@@ -36,24 +37,37 @@ public class ProductDto {
 		this.incomingPrice = incomingPrice;
 		this.outgoingPrice = outgoingPrice;
 		this.sellingPrice = sellingPrice;
+		this.imagePath = imagePath;
 	}
 
 	
 	
 	@Override
 	public String toString() {
-		return "ProductDto [key=" + key + ", code1=" + code1 + ", code2=" + code2 + ", category=" + category + ", name="
-				+ name + ", option=" + option + ", standard=" + standard + ", unit=" + unit + ", barcode=" + barcode
-				+ ", incomingPrice=" + incomingPrice + ", outgoingPrice=" + outgoingPrice + ", sellingPrice="
-				+ sellingPrice + "]";
+		String temp = Const.PRODUCT_TABLE + "[ date:"+this.date+" , " +
+				Const.PRODUCT_CODE1+":"+this.code1+" , " +
+				Const.PRODUCT_CODE2+":"+this.code2+" , " +
+				Const.PRODUCT_CATEGORY+":"+this.category+" , " +
+				Const.PRODUCT_NAME+":"+this.name+" , " +
+				Const.PRODUCT_OPTION+":"+this.option+" , " +
+				Const.PRODUCT_STANDARD+":"+this.standard+" , " +
+				Const.PRODUCT_UNIT+":"+this.unit+" , " +
+				Const.PRODUCT_BARCODE+":"+this.barcode+" , " +
+				Const.PRODUCT_INCOMING_PRICE+":"+this.incomingPrice+" , " +
+				Const.PRODUCT_OUTGOING_PRICE+":"+this.outgoingPrice+" , " +
+				Const.PRODUCT_SELLING_PRICE+":"+this.sellingPrice+" , " +
+				Const.PRODUCT_IMAGE_PATH+":"+this.imagePath+" , " +
+				" ]";
+		
+		return temp;
 	}
 
-	public String getKey() {
-		return key;
+	public String getDate() {
+		return date;
 	}
 
-	public void setKey(String key) {
-		this.key = key;
+	public void setDate(String date) {
+		this.date = date;
 	}
 
 	public String getCode1() {
@@ -142,5 +156,13 @@ public class ProductDto {
 
 	public void setSellingPrice(String sellingPrice) {
 		this.sellingPrice = sellingPrice;
+	}
+
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 }

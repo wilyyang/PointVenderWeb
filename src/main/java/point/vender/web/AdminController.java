@@ -2,6 +2,7 @@ package point.vender.web;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -33,60 +34,39 @@ import point.vender.web.dto.ProductDto;
 @Controller
 public class AdminController {
 
-	
 	private static final Log LOG = LogFactory.getLog(AdminController.class );
-	
-	@RequestMapping(value = "/modifyProduct", method = RequestMethod.POST)
-	public @ResponseBody ProductDto ajaxData(@RequestBody ProductDto data, Model model) {
-		IProductDao dao = new ProductDao();
-		ProductDto temp =  Util.getProduct(dao.getDao(data.getKey()));
-		return temp;
-	}
 	
 	@RequestMapping({"/", "/productManage"})
 	public String productManageForm(Locale locale, Model model) {
-		
 		IProductDao dao = new ProductDao();
-		List<Entity> listEntity = dao.listDao();
-		List<ProductDto> listDto = new ArrayList<ProductDto>();
-		for(int i = 0; i<listEntity.size(); i++)
-		{
-			listDto.add(Util.getProduct(listEntity.get(i)));
-		}
+		List<ProductDto> listDto = dao.listProduct();
 		model.addAttribute("boardList", listDto);
 		return "productManageForm";
 	}
 	
-	@RequestMapping(value="/addProduct", method=RequestMethod.POST)
+	@RequestMapping(value="addProduct", method=RequestMethod.POST)
 	public String addProduct(HttpServletRequest request, Locale locale, Model model) throws ServletException {
 		IProductDao dao = new ProductDao();
-		dao.addDao(request.getParameter("name"), request.getParameterMap());
-		
-		List<Entity> listEntity = dao.listDao();
-		List<ProductDto> listDto = new ArrayList<ProductDto>();
-		for(int i = 0; i<listEntity.size(); i++)
-		{
-			listDto.add(Util.getProduct(listEntity.get(i)));
-		}
-		model.addAttribute("boardList", listDto);
-		
-		return "productManageForm";
+		dao.addProduct(request.getParameterMap());
+	
+		return "redirect:productManage";
 	}
 	
-	@RequestMapping(value="/deleteProduct", method=RequestMethod.POST)
+	@RequestMapping(value = "modifyProduct", method = RequestMethod.POST)
+	public @ResponseBody ProductDto ajaxData(@RequestBody ProductDto data, Model model) {
+		IProductDao dao = new ProductDao();
+		ProductDto temp = dao.getProduct(data.getDate()+data.getName());
+		return temp;
+	}
+	
+
+	
+	@RequestMapping(value="deleteProduct", method=RequestMethod.POST)
 	public String deleteProduct(HttpServletRequest request, Locale locale, Model model) throws ServletException {
 		IProductDao dao = new ProductDao();
-		dao.deleteDao(request.getParameter("key"));
+		dao.deleteProduct(request.getParameter("date")+request.getParameter("name"));
 		
-		List<Entity> listEntity = dao.listDao();
-		List<ProductDto> listDto = new ArrayList<ProductDto>();
-		for(int i = 0; i<listEntity.size(); i++)
-		{
-			listDto.add(Util.getProduct(listEntity.get(i)));
-		}
-		model.addAttribute("boardList", listDto);
-		
-		return "productManageForm";
+		return "redirect:productManage";
 	}
 	
 	

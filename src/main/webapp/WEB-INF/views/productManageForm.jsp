@@ -68,12 +68,12 @@
 		<button id="productDetailBtn" type="button" class="btn btn-primary"
 			data-toggle="modal">상품상세</button>
 
-		<br /> <br /> <br />
-
+		<br /> <br /> <br /> 
 		<div class="table-responsive">
 			<table id="productTable" class="table table-hover">
 				<thead>
 					<tr>
+						<th scope="col">생성시간</th>
 						<th scope="col">분류</th>
 						<th scope="col">품명</th>
 						<th scope="col">옵션</th>
@@ -86,13 +86,14 @@
 						<c:when test="${ empty boardList }">
 							<tr>
 								<th scope="row"></th>
-								<td colspan="5" align="center">데이터가 없습니다.</td>
+								<td colspan="6" align="center">데이터가 없습니다.</td>
 							</tr>
 						</c:when>
 
 						<c:when test="${!empty boardList}">
 							<c:forEach var="list" items="${boardList}">
 								<tr class='clickable-row'>
+									<td class="product-date"><c:out value="${list.date}" /></td>
 									<td><c:out value="${list.category}" /></td>
 									<td class="product-name"><c:out value="${list.name}" /></td>
 									<td><c:out value="${list.option}" /></td>
@@ -119,12 +120,23 @@
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
-					<h4 class="modal-title" id="exampleModalLabel"></h4>
+					<h4 class="modal-title" id="exampleModalLabel">상품 추가</h4>
 				</div>
 				<div class="modal-body">
 					<div class="form-group row">
 						<div class="col-xs-4">
 							<label style="color: red;" id="error_label"></label>
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-xs-4">
+							<img class="card-img-top"
+								data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail"
+								alt="Thumbnail [100%x225]"
+								style="height: 225px; width: 225px; display: block;"
+								src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22368%22%20height%3D%22226%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20368%20226%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1756dfee60a%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A18pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1756dfee60a%22%3E%3Crect%20width%3D%22368%22%20height%3D%22226%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22123.3359375%22%20y%3D%22120.95%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E"
+								data-holder-rendered="true"/>
 						</div>
 					</div>
 
@@ -253,21 +265,24 @@
 		function deleteProduct() {
 			var productTable = document.getElementById("productTable");
 			var actives = productTable.getElementsByClassName("active");
-			var product_name = actives[0]
-					.getElementsByClassName("product-name")[0].innerHTML;
+			var product_date = actives[0].getElementsByClassName("product-date")[0].innerHTML;
+			var product_name = actives[0].getElementsByClassName("product-name")[0].innerHTML;
 
 			post_to_url('/deleteProduct', {
-				'key' : product_name
+				'date' : product_date,
+				'name' : product_name
 			});
 		}
 		
 		function modifyProduct() {
 			var productTable = document.getElementById("productTable");
 			var actives = productTable.getElementsByClassName("active");
+			var product_date = actives[0].getElementsByClassName("product-date")[0].innerHTML;
 			var product_name = actives[0].getElementsByClassName("product-name")[0].innerHTML;
 			
 			var result = {
-				"key" : product_name
+					'date' : product_date,
+					'name' : product_name
 			};
 			$.ajax({
 				type : "POST",
@@ -302,10 +317,12 @@
 		function detailProduct() {
 			var productTable = document.getElementById("productTable");
 			var actives = productTable.getElementsByClassName("active");
+			var product_date = actives[0].getElementsByClassName("product-date")[0].innerHTML;
 			var product_name = actives[0].getElementsByClassName("product-name")[0].innerHTML;
 			
 			var result = {
-				"key" : product_name
+					'date' : product_date,
+					'name' : product_name
 			};
 			
 			var originalForm = $('#productTable');
