@@ -17,7 +17,11 @@
 
 <!-- Bootstrap core CSS -->
 <link href="resources/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="resources/dist/css/bootstrap-select.min.css" rel="stylesheet" type="text/css"  />
 
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="resources/dist/js/bootstrap-select.min.js"></script>
+	
 <!-- Custom styles for this template -->
 <link href="resources/docs/examples/dashboard/dashboard.css"
 	rel="stylesheet">
@@ -68,7 +72,23 @@
 		<button id="productDetailBtn" type="button" class="btn btn-primary"
 			data-toggle="modal">상품상세</button>
 
-		<br /> <br /> <br /> 
+		<br /> <br />
+
+		<div class="form-group row">
+			<div class="col-xs-2">
+				<input class="form-control" id="searchKeyword" type="text">
+			</div>
+			<select class="selectpicker" id="searchCategory">
+				<option>category</option>
+				<option>name</option>
+			</select>
+
+			<button id="productSearchBtn" type="button" class="btn btn-primary"
+				data-toggle="modal">상품검색</button>
+
+		</div>
+
+		<br /> <br /> 
 		<div class="table-responsive">
 			<table id="productTable" class="table table-hover">
 				<thead>
@@ -212,8 +232,16 @@
 </div>
 	<!-- Bootstrap core JavaScript
     ================================================== -->
-	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
 	<script>
+	$(window).on('load', function ()
+			{
+				$('.selectpicker').selectpicker(
+				{
+					'selectedText': 'cat'
+			 	});
+			});
+	
 		$(document).ready(function() {
 			
 			$('#productAddBtn').click(function(){
@@ -230,6 +258,10 @@
 			
 			$('#productDetailBtn').click(function(){
 				detailProduct();
+			});
+			
+			$('#productSearchBtn').click(function(){
+				searchProduct();
 			});
 			
 			$('#productAddModal').on('show.bs.modal', function(event) {
@@ -360,6 +392,19 @@
 				}
 			});
 		}
+		
+		function searchProduct(){
+		
+			
+			var select = document.getElementById("searchCategory");  
+			var category = select.options[select.selectedIndex].value;
+			var keyword = document.getElementById("searchKeyword").value;
+
+			post_to_url('/searchProduct', {
+				'category' : category,
+				'keyword' : keyword
+			});			
+		}
 
 		function formProductAddCheck() {
 			if (!document.addProductForm.name.value) {
@@ -394,7 +439,9 @@
 		});
 	</script>
 
+
 	<!-- Placed at the end of the document so the pages load faster -->
+
 	<script src="resources/dist/js/bootstrap.min.js"></script>
 	<script src="resources/docs/assets/js/docs.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->

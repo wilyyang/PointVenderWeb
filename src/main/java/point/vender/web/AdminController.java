@@ -44,6 +44,14 @@ public class AdminController {
 		return "productManageForm";
 	}
 	
+	@RequestMapping(value="searchProduct", method=RequestMethod.POST)
+	public String searchProduct(HttpServletRequest request, Locale locale, Model model) throws ServletException {
+		IProductDao dao = new ProductDao();	
+		List<ProductDto> listDto = dao.searchProduct(request.getParameter("category"), request.getParameter("keyword"));
+		model.addAttribute("boardList", listDto);
+		return "productManageForm";
+	}
+	
 	@RequestMapping(value="addProduct", method=RequestMethod.POST)
 	public String addProduct(HttpServletRequest request, Locale locale, Model model) throws ServletException {
 		IProductDao dao = new ProductDao();
@@ -58,8 +66,6 @@ public class AdminController {
 		ProductDto temp = dao.getProduct(data.getDate()+data.getName());
 		return temp;
 	}
-	
-
 	
 	@RequestMapping(value="deleteProduct", method=RequestMethod.POST)
 	public String deleteProduct(HttpServletRequest request, Locale locale, Model model) throws ServletException {
