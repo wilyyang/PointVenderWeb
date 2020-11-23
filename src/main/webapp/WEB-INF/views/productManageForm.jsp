@@ -75,16 +75,20 @@
 		<br /> <br />
 
 		<div class="form-group row">
-			<div class="col-xs-2">
+			<div class="col-xs-4">
 				<input class="form-control" id="searchKeyword" type="text">
 			</div>
-			<select class="selectpicker" id="searchCategory">
-				<option>category</option>
-				<option>name</option>
-			</select>
+			<div class="col-xs-3">
+				<select class="selectpicker" data-width="80%" id="searchCategory">
+					<option>category</option>
+					<option>name</option>
+				</select>
+			</div>
 
-			<button id="productSearchBtn" type="button" class="btn btn-primary"
-				data-toggle="modal">상품검색</button>
+			<div class=col-xs-3">
+				<button id="productSearchBtn" type="button" class="btn btn-primary"
+					data-toggle="modal">상품검색</button>
+			</div>
 
 		</div>
 
@@ -93,7 +97,7 @@
 			<table id="productTable" class="table table-hover">
 				<thead>
 					<tr>
-						<th scope="col">생성시간</th>
+						<th scope="col" style="display:none;">생성시간</th>
 						<th scope="col">분류</th>
 						<th scope="col">품명</th>
 						<th scope="col">옵션</th>
@@ -113,7 +117,7 @@
 						<c:when test="${!empty boardList}">
 							<c:forEach var="list" items="${boardList}">
 								<tr class='clickable-row'>
-									<td class="product-date"><c:out value="${list.date}" /></td>
+									<td class="product-date" style="display:none;"><c:out value="${list.date}" /></td>
 									<td><c:out value="${list.category}" /></td>
 									<td class="product-name"><c:out value="${list.name}" /></td>
 									<td><c:out value="${list.option}" /></td>
